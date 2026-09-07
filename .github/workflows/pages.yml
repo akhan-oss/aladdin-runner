@@ -21,9 +21,11 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        # Use the maintained upload-artifact v4 to avoid the v3 deprecation
+        uses: actions/upload-artifact@v4
         with:
-          path: ./
+          name: pages
+          path: ./    # <-- ideally set this to your built site dir, e.g. ./public or ./docs
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
