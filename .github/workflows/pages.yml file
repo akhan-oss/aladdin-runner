@@ -1,0 +1,16 @@
+steps:
+  - name: Checkout
+    uses: actions/checkout@v4
+
+  - name: Configure Pages
+    uses: actions/configure-pages@v3
+
+  - name: Upload artifact
+    # Use the maintained upload-artifact v4 to avoid the v3 deprecation
+    uses: actions/upload-artifact@v4
+    with:
+      name: pages
+      path: ./    # <-- ideally change this to the built site directory, e.g. ./public or ./docs
+
+  - name: Deploy to GitHub Pages
+    uses: actions/deploy-pages@v1
